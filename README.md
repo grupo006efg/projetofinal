@@ -113,7 +113,7 @@ Essa estrutura permite que você demonstecnologias de maneira prática e clara, 
 
 - [@kallyta](https://www.github.com/grupo006efg)
 
-- [@Tiago moreira](https://www.github.com/octokatherine)
+- [@Tiago moreira](https://www.github.com/grupo006efg)
 
-- [@ Ray](https://www.github.com/octokatherine)
+- [@ Ray](https://www.github.com/grupo006efg)
 
