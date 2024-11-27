@@ -120,6 +120,63 @@
         </div>`;
     });
   }
+// Adicionar produto ao carrinho
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    cart.push(product);
+    alert(`Produto ${product.name} adicionado ao carrinho!`);
+  }
+
+  // Exibir carrinho
+  function viewCart() {
+    const cartContent = document.getElementById("cartContent");
+    if (cart.length === 0) {
+      cartContent.innerHTML = "<p>O carrinho está vazio.</p>";
+    } else {
+      cartContent.innerHTML = "<ul class='list-group'>";
+      cart.forEach((item, index) => {
+        cartContent.innerHTML += `
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            ${item.name} - R$${item.price.toFixed(2)}
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remover</button>
+          </li>`;
+      });
+      cartContent.innerHTML += "</ul>";
+    }
+    const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
+    cartModal.show();
+  }
+
+  // Remover item do carrinho
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    viewCart();
+  }
+
+  // Finalizar compra
+  function checkout() {
+    if (cart.length === 0) {
+      alert("O carrinho está vazio.");
+      return;
+    }
+    alert("Compra realizada com sucesso!");
+    cart = [];
+    viewCart();
+  }
+
+  // Autenticação do login
+  function authenticate() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "admin") {
+      alert("Login bem-sucedido!");
+      const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
+      loginModal.hide();
+    } else {
+      alert("Usuário ou senha incorretos.");
+    }
+  }
 
   // Inicializar página
   document.addEventListener("DOMContentLoaded", displayProducts);
