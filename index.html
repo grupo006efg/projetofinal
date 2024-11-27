@@ -94,32 +94,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   const products = [
-  https://www.google.com/url?sa=i&url=https%3A%2F%2Fcaua1000.wordpress.com%2F2012%2F05%2F11%2Fturma-da-monica-wallpapershomenagem-ao-corinthians-e-ronaldinho-gauchoimagens-especiaissite-oficial-e-personagens%2Fturma-da-monica-wallpaper-3%2F&psig=AOvVaw1nbdoSapet9vgPZn2NMI9c&ust=1732793332017000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCOw6m0_IkDFQAAAAAdAAAAABAE{ id: 1, name: "Produto A", price: 19.99, description: "Descrição do produto A" },
-    { id: 2, name: "Produto B", price: 29.99, description: "Descrição do produto B" },
-    { id: 3, name: "Produto C", price: 39.99, description: "Descrição do produto C" },
-    { id: 4, name: "Produto D", price: 49.99, description: "Descrição do produto D" },
-  ];
+  { id: 1, name: "Produto A", price: 19.99, description: "Descrição do produto A", image: "https://via.placeholder.com/150" },
+  { id: 2, name: "Produto B", price: 29.99, description: "Descrição do produto B", image: "https://via.placeholder.com/150" },
+  { id: 3, name: "Produto C", price: 39.99, description: "Descrição do produto C", image: "https://via.placeholder.com/150" },
+  { id: 4, name: "Produto D", price: 49.99, description: "Descrição do produto D", image: "https://via.placeholder.com/150" },
+];
+
 
   let cart = [];
 
   // Exibir produtos na página
   function displayProducts() {
-    const productList = document.getElementById("productList");
-    productList.innerHTML = "";
-    products.forEach(product => {
-      productList.innerHTML += `
-        <div class="col-md-3">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <h5 class="card-title">${product.name}</h5>
-              <p class="card-text">${product.description}</p>
-              <p class="text-primary fw-bold">R$${product.price.toFixed(2)}</p>
-              <button class="btn btn-primary" onclick="addToCart(${product.id})">Adicionar ao Carrinho</button>
-            </div>
+  const productList = document.getElementById("productList");
+  productList.innerHTML = "";
+  products.forEach(product => {
+    productList.innerHTML += `
+      <div class="col-md-3">
+        <div class="card mb-4">
+          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${product.name}</h5>
+            <p class="card-text">${product.description}</p>
+            <p class="text-primary fw-bold">R$${product.price.toFixed(2)}</p>
+            <button class="btn btn-primary" onclick="addToCart(${product.id})">Adicionar ao Carrinho</button>
           </div>
-        </div>`;
-    });
-  }
+        </div>
+      </div>`;
+  });
+}
 // Adicionar produto ao carrinho
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
